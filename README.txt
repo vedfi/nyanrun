@@ -1,5 +1,6 @@
 Nyan RUN GAME v1.5 By VedFI
 
+Builded with C & SDL2 Libraries
 Works Only With 64-Bit Machines
 
 -UP AND DOWN KEY TO MOVE
