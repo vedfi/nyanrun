@@ -1,4 +1,4 @@
-Nyan RUN GAME v1.4 By VedFI
+Nyan RUN GAME v1.5 By VedFI
 
 Works Only With 64-Bit Machines
 
@@ -6,6 +6,10 @@ Works Only With 64-Bit Machines
 -X TO SHOOT
 -P TO PAUSE
 
-*Console Edition: "noborder" command to hack.
+*Console Edition: "noborder" & "immortal" commands to hack.
+
+Feel Free To Report All Of The Bugs If There
+
+vedfi.company@gmail.com
 
 cheers.
