@@ -14,11 +14,15 @@ void delay(unsigned int mseconds)
 }
 int main(int argc, char **argv)
 {
-    int pause,onay,onay2;
+    int pause,onay,onay2,modonay;
     time_t basla,bit;
     double fark;
+    char mod[20];
     char kod[20];
-
+    printf("Display mode is windowed by default. For full-screen type 'max'\n");
+    gets(mod);
+    modonay = strcmp(mod,"max");
+    printf("\nCheat Code?\n");
     gets(kod);
     onay = strcmp(kod,"noborder");
     onay2 = strcmp(kod,"immortal");
@@ -37,8 +41,11 @@ int main(int argc, char **argv)
     Mix_Chunk *laser = Mix_LoadWAV("laser.wav");
     Mix_Chunk *blow = Mix_LoadWAV("blow.wav");
     // Create a SDL window
-    SDL_Window *window = SDL_CreateWindow("Nyan RUN v1.5 Console Edition", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 567, SDL_WINDOW_OPENGL);
-
+    SDL_Window *window = SDL_CreateWindow("Nyan RUN v1.6", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, (SDL_WINDOW_OPENGL));
+    if(modonay==0){
+    SDL_ShowCursor(SDL_DISABLE);
+    SDL_SetWindowFullscreen(window,SDL_WINDOW_FULLSCREEN);
+    }
     // Create a renderer (accelerated and in sync with the display refresh rate)
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
@@ -49,6 +56,10 @@ int main(int argc, char **argv)
     SDL_Surface *intro = IMG_Load("intro.png");
     SDL_Texture *introtexture = SDL_CreateTextureFromSurface(renderer, intro);
     SDL_FreeSurface(intro);
+
+    SDL_Surface *vedfi = IMG_Load("vedfi.png");
+    SDL_Texture *vedfitexture = SDL_CreateTextureFromSurface(renderer, vedfi);
+    SDL_FreeSurface(vedfi);
 
     SDL_Surface *ates = IMG_Load("ates.png");
     SDL_Texture *atestexture = SDL_CreateTextureFromSurface(renderer, ates);
@@ -108,6 +119,8 @@ int main(int argc, char **argv)
     }
 
     //IMAGE Location
+    SDL_Rect vedfikonum = {0,567,800,33};
+
     SDL_Rect pauzekonum = {0,0,800,567};
     SDL_Rect stage2konum = {10700,258,300,100};
     SDL_Rect stage3konum = {18700,258,300,100};
@@ -362,6 +375,12 @@ int main(int argc, char **argv)
                         Mix_PlayChannel(2,laser,0);
                         break;
                     }
+                case SDLK_ESCAPE:
+                    {
+                        running = false;
+                        printf("\aQUIT.\n");
+                        break;
+                    }
                 case SDLK_p:
                     {
                         pause = 1;
@@ -377,6 +396,13 @@ int main(int argc, char **argv)
                                 {
                                 pause =0;
                                 Mix_ResumeMusic();
+                                break;
+                                }
+                            case SDLK_ESCAPE:
+                                {
+                                running = false;
+                                pause =0;
+                                printf("\aQUIT.\n");
                                 break;
                                 }
                             }
@@ -2031,6 +2057,7 @@ int main(int argc, char **argv)
         SDL_RenderClear(renderer);
 
         //for draw line
+                        SDL_RenderCopy(renderer, vedfitexture, NULL, &vedfikonum);
         SDL_RenderCopy(renderer, arkaplantexture, NULL, &texture_destination2);
         SDL_RenderCopy(renderer, arkaplan2texture, NULL, &texture_destination4);
         SDL_RenderCopy(renderer, arkaplan3texture, NULL, &texture_destination5);
