@@ -1,0 +1,19 @@
+Nyan RUN v1.6 LINUX 
+
+ONLY TESTED IN FEDORA 27 64-BIT. 
+  //Should be running fine on other linux distributions.
+  //If not you can try using windows version with wine.
+
+SDL2 Libraries must be installed on system.
+
+--MUST BE RUN WITH TERMINAL--
+
+All cheats & fullscreen mode works.
+No bugs at all.
+
+CHANGES:
+    *In collisions game window is not closing automatically. Tap on a key in terminal window.
+    
+Have FUN !
+
+-VedFI
